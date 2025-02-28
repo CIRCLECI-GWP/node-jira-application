@@ -21,4 +21,6 @@ workflows:
     jobs:
       - build-and-test:
           post-steps:
-            - jira/notify
+            - jira/notify:
+              pipeline_id: << pipeline.id >>
+              pipeline_number: << pipeline.number >>
