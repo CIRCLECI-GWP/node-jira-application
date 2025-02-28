@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   node: circleci/node@7.1.0
+  jira: circleci/jira@2.2.0
 jobs:
   build-and-test:
     executor:
@@ -18,4 +19,6 @@ jobs:
 workflows:
   build-and-test:
     jobs:
-      - build-and-test
+      - build-and-test:
+          post-steps:
+            - jira/notify
